@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>All Recipes</h2>
+
+<form method="GET" class="mb-4">
+    <div class="input-group">
+        <input
+            type="text"
+            name="q"
+            class="form-control"
+            placeholder="Search recipes..."
+            value="{{ request.GET.q }}"
+        >
+        <button class="btn btn-primary" type="submit">
+            Search
+        </button>
+    </div>
+</form>
+
+{% for recipe in recipes %}
+    <div class="card p-3 mb-3 shadow-sm">
+
+        {% if recipe.image %}
+            <img src="{{ recipe.image.url }}"
+                 class="card-img-top mb-2"
+                 alt="{{ recipe.title }}"
+                 style="max-width: 250px; height: 200px; object-fit: cover;">
+        {% endif %}
+
+        <a href="{% url 'recipe_detail' recipe.id %}">
+            <h4>{{ recipe.title }}</h4>
+        </a>
+
+    </div>
+{% empty %}
+    <p>No recipes found.</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Manager</title>
+    {% load static %}
+    <link rel="stylesheet"
+          href="{% static 'recipes/style.css' %}">
+</head>
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/create/">Add Recipe</a>
+</nav>
+
+{% block body %}
+{% endblock %}
+
+<script src="{% static 'recipes/script.js' %}"></script>
+
+</body>
+</html>
